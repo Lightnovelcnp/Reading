@@ -1,0 +1,505 @@
+/* =========================================================
+   TOKENS  —  "Impact" theme: fighting / martial arts, orange energy
+   Palette:  void #100b08 (page) · ink #1c130d (surface)
+             ink-light #2a1c12 (hover surface) · parchment #f2e2d0 (text)
+             parchment-dim #b89a80 (muted text) · blood #ff5a1f (primary/ember accent)
+             gold #ffb400 (amber accent / impact burst)
+   Type:     Display -> 'Bebas Neue' (bold, condensed, impact)
+             Body -> 'Crimson Pro'   Utility -> 'Inter'
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --void: #100b08;
+  --ink: #1c130d;
+  --ink-light: #2a1c12;
+  --parchment: #f2e2d0;
+  --parchment-dim: #b89a80;
+  --blood: #ff5a1f;
+  --blood-bright: #ff7a3d;
+  --gold: #ffb400;
+  --gold-dim: #b37c00;
+
+  --font-display: 'Bebas Neue', 'Inter', sans-serif;
+  --font-body: 'Crimson Pro', serif;
+  --font-ui: 'Inter', sans-serif;
+
+  --radius: 3px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--void);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(255, 90, 31, 0.12), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(255, 180, 0, 0.06), transparent 60%);
+  background-attachment: fixed;
+}
+
+a { color: inherit; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   LAYOUT SHELL
+========================================================= */
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+header.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(11, 13, 18, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 180, 0, 0.18);
+}
+
+.site-header .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  color: var(--parchment);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand .mark {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--blood-bright);
+  box-shadow: 0 0 10px 2px rgba(255, 122, 61, 0.7);
+}
+
+nav.site-nav {
+  display: flex;
+  gap: 28px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--parchment-dim);
+}
+
+nav.site-nav a { transition: color 0.2s ease; }
+nav.site-nav a:hover, nav.site-nav a.active { color: var(--gold); }
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  padding: 90px 0 70px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: -20% -10%;
+  z-index: -1;
+  background-image: repeating-linear-gradient(
+    115deg,
+    rgba(255, 90, 31, 0.05) 0px,
+    rgba(255, 90, 31, 0.05) 2px,
+    transparent 2px,
+    transparent 46px
+  );
+  mask-image: radial-gradient(ellipse 70% 60% at 30% 20%, black, transparent 75%);
+  pointer-events: none;
+}
+
+.hero .eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero .eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold-dim);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 4.6rem);
+  letter-spacing: 0.02em;
+  line-height: 0.98;
+  margin: 0 0 20px;
+  color: var(--parchment);
+  text-shadow: 0 0 40px rgba(255, 90, 31, 0.35);
+}
+
+.hero .tagline {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--parchment-dim);
+  max-width: 55ch;
+  margin: 0 0 30px;
+}
+
+.hero .synopsis {
+  max-width: 62ch;
+  color: var(--parchment);
+  opacity: 0.9;
+  margin-bottom: 34px;
+}
+
+.hero .actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.btn {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  padding: 13px 26px;
+  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, var(--blood-bright), var(--blood));
+  color: var(--parchment);
+  box-shadow: 0 6px 22px -6px rgba(255, 90, 31, 0.6);
+}
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 10px 26px -6px rgba(255, 90, 31, 0.75); }
+
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(255, 180, 0, 0.35);
+  color: var(--gold);
+}
+.btn-ghost:hover { background: rgba(255, 180, 0, 0.08); }
+
+/* =========================================================
+   SECTION HEADINGS
+========================================================= */
+
+.section { padding: 60px 0; }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 180, 0, 0.18);
+  padding-bottom: 16px;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.03em;
+  margin: 0;
+  color: var(--parchment);
+}
+
+.section-head .count {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--parchment-dim);
+  letter-spacing: 0.04em;
+}
+
+/* =========================================================
+   TABLE OF CONTENTS  (signature element)
+   Styled like an old tome's index: wax-seal chapter numerals,
+   a hairline spine on the left, ember dot marks unread progress.
+========================================================= */
+
+.toc { position: relative; }
+
+.toc::before {
+  content: '';
+  position: absolute;
+  left: 27px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(255, 180, 0, 0.4), rgba(255, 180, 0, 0.05));
+}
+
+.toc-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px 16px 18px 0;
+  border-radius: var(--radius);
+  transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+.toc-item:hover { background: rgba(255, 180, 0, 0.05); padding-left: 8px; }
+
+.toc-seal {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 35% 30%, var(--blood-bright), var(--blood) 70%);
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-size: 1.3rem;
+  color: var(--parchment);
+  box-shadow: 0 0 0 4px var(--void), 0 0 16px -2px rgba(255, 90, 31, 0.6);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.toc-item:hover .toc-seal {
+  box-shadow: 0 0 0 4px var(--void), 0 0 22px 0px rgba(255, 122, 61, 0.85);
+  transform: scale(1.05);
+}
+
+.toc-body { flex: 1; min-width: 0; }
+
+.toc-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--parchment);
+  margin: 0 0 4px;
+}
+
+.toc-meta {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--parchment-dim);
+  letter-spacing: 0.03em;
+  display: flex;
+  gap: 14px;
+}
+
+.tag-new {
+  color: var(--gold);
+  border: 1px solid rgba(255, 180, 0, 0.4);
+  border-radius: var(--radius);
+  padding: 1px 7px;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+}
+
+.toc-arrow {
+  font-family: var(--font-ui);
+  color: var(--parchment-dim);
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.toc-item:hover .toc-arrow { opacity: 1; transform: translateX(2px); }
+
+/* =========================================================
+   MANHWA TEASER
+========================================================= */
+
+.teaser {
+  border: 1px dashed rgba(255, 180, 0, 0.3);
+  border-radius: 6px;
+  padding: 34px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.teaser .icon {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  color: var(--gold-dim);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 180, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.teaser h3 {
+  font-family: var(--font-display);
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  color: var(--parchment);
+}
+
+.teaser p { margin: 0; color: var(--parchment-dim); font-size: 0.95rem; }
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer.site-footer {
+  border-top: 1px solid rgba(255, 180, 0, 0.15);
+  padding: 34px 0 60px;
+  margin-top: 30px;
+}
+
+footer.site-footer .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer.site-footer p {
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--parchment-dim);
+  margin: 0;
+}
+
+/* =========================================================
+   CHAPTER READER PAGE
+========================================================= */
+
+.reader-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blood), var(--gold));
+  width: 0%;
+  z-index: 50;
+  transition: width 0.1s linear;
+}
+
+.reader-head {
+  padding: 70px 0 20px;
+  border-bottom: 1px solid rgba(255, 180, 0, 0.15);
+  margin-bottom: 46px;
+}
+
+.reader-head .eyebrow {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.reader-head h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin: 0 0 30px;
+  color: var(--parchment);
+}
+
+.chapter-text {
+  font-family: var(--font-body);
+  font-size: 1.18rem;
+  color: var(--parchment);
+  max-width: 68ch;
+}
+
+.chapter-text p { margin: 0 0 1.4em; }
+
+.chapter-text p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 3.4rem;
+  float: left;
+  line-height: 0.8;
+  padding: 8px 10px 0 0;
+  color: var(--gold);
+}
+
+.chapter-text .placeholder-note {
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  color: var(--parchment-dim);
+  border-left: 2px solid var(--blood);
+  padding: 10px 18px;
+  background: rgba(255, 90, 31, 0.08);
+  margin-bottom: 2em;
+}
+
+.reader-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin: 60px 0 20px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 180, 0, 0.15);
+  font-family: var(--font-ui);
+}
+
+.reader-nav a {
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.reader-nav a:hover { color: var(--parchment); }
+.reader-nav .disabled { color: var(--parchment-dim); pointer-events: none; opacity: 0.4; }
+
+.reader-nav .to-index {
+  font-size: 0.78rem;
+  color: var(--parchment-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 640px) {
+  .site-header .bar { padding: 14px 20px; }
+  nav.site-nav { gap: 16px; font-size: 0.72rem; }
+  .hero { padding: 60px 0 40px; }
+  .toc-item { gap: 14px; }
+  .toc-seal { width: 44px; height: 44px; font-size: 0.9rem; }
+  .teaser { flex-direction: column; text-align: center; }
+}
