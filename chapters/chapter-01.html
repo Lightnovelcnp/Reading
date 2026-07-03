@@ -28,6 +28,7 @@
   <div class="reader-head">
     <p class="eyebrow">ตอนที่ 01</p>
     <h1>ผู้สืบทอดหมัดแห่งราชันย์</h1>
+    <span class="read-badge" id="read-count">…</span>
   </div>
 
   <article class="chapter-text">
@@ -231,5 +232,12 @@ RAGNAROK TOURNAMENT
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../js/counter.js"></script>
+<script>
+  siteCounter.hitOncePerBrowser("chapter-01").then(function (value) {
+    var el = document.getElementById("read-count");
+    if (el && value !== null) el.textContent = value.toLocaleString() + " อ่านแล้ว";
+  });
+</script>
 </body>
 </html>

@@ -32,6 +32,10 @@
       เด็กหนุ่มธรรมดาที่ชื่นชอบการเล่นกีฬา อยู่มาวันนึงเขาได้ค้นพบว่าตัวเองมีพลังอันยิ่งใหญ่
       เด็กหนุ่มเลือกที่จะปกป้องสิ่งสำคัญ เขาจะรับผิดชอบสิ่งที่ตนพูดได้หรือไม่
     </p>
+    <div class="site-stats">
+      <span class="dot"></span>
+      <span><strong id="site-visit-count">…</strong> คนเข้ามาดูเว็บนี้แล้ว</span>
+    </div>
     <div class="actions">
       <a class="btn btn-primary" href="chapters/chapter-01.html">เริ่มอ่านตอนที่ 1</a>
       <a class="btn btn-ghost" href="#chapters">ตอนทั้งหมด</a>
@@ -49,7 +53,11 @@
         <span class="toc-seal">01</span>
         <span class="toc-body">
           <p class="toc-title">ผู้สีบทอดหมัดแห่งราชันย์</p>
-          <span class="toc-meta"><span>~2,400 คำ</span><span class="tag-new">NEW</span></span>
+          <span class="toc-meta">
+            <span>~2,400 คำ</span>
+            <span class="tag-new">NEW</span>
+            <span class="read-badge" id="reads-01">…</span>
+          </span>
         </span>
         <span class="toc-arrow">อ่าน →</span>
       </a>
@@ -57,7 +65,10 @@
         <span class="toc-seal">02</span>
         <span class="toc-body">
           <p class="toc-title">ม.6/1</p>
-          <span class="toc-meta"><span>~2,100 words</span></span>
+          <span class="toc-meta">
+            <span>~2,100 words</span>
+            <span class="read-badge" id="reads-02">…</span>
+          </span>
         </span>
         <span class="toc-arrow">อ่าน →</span>
       </a>
@@ -65,7 +76,10 @@
         <span class="toc-seal">03</span>
         <span class="toc-body">
           <p class="toc-title">The Bargain</p>
-          <span class="toc-meta"><span>~2,600 words</span></span>
+          <span class="toc-meta">
+            <span>~2,600 words</span>
+            <span class="read-badge" id="reads-03">…</span>
+          </span>
         </span>
         <span class="toc-arrow">Read →</span>
       </a>
@@ -73,7 +87,10 @@
         <span class="toc-seal">04</span>
         <span class="toc-body">
           <p class="toc-title">What the Fire Remembers</p>
-          <span class="toc-meta"><span>~1,900 words</span></span>
+          <span class="toc-meta">
+            <span>~1,900 words</span>
+            <span class="read-badge" id="reads-04">…</span>
+          </span>
         </span>
         <span class="toc-arrow">Read →</span>
       </a>
@@ -81,7 +98,10 @@
         <span class="toc-seal">05</span>
         <span class="toc-body">
           <p class="toc-title">The Second Crown</p>
-          <span class="toc-meta"><span>~2,300 words</span></span>
+          <span class="toc-meta">
+            <span>~2,300 words</span>
+            <span class="read-badge" id="reads-05">…</span>
+          </span>
         </span>
         <span class="toc-arrow">Read →</span>
       </a>
@@ -119,6 +139,24 @@
     <p>สร้างด้วยความทุ่มเทของนักเขียน</p>
   </div>
 </footer>
+
+<script src="js/counter.js"></script>
+<script>
+  // Count this browser's visit once, and show the running total.
+  siteCounter.hitOncePerBrowser('site-visits').then(function (value) {
+    var el = document.getElementById('site-visit-count');
+    if (el && value !== null) el.textContent = value.toLocaleString();
+  });
+
+  // Show how many times each chapter has been opened (without adding to the count —
+  // the count only goes up when someone actually opens that chapter's page).
+  ['01', '02', '03', '04', '05'].forEach(function (num) {
+    siteCounter.get('chapter-' + num).then(function (value) {
+      var el = document.getElementById('reads-' + num);
+      if (el) el.textContent = (value || 0).toLocaleString() + ' อ่านแล้ว';
+    });
+  });
+</script>
 
 </body>
 </html>

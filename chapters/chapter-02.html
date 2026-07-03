@@ -28,15 +28,16 @@
   <div class="reader-head">
     <p class="eyebrow">ตอนที่ 02</p>
     <h1>ผู้สืบทอดหมัดแห่งราชันย์</h1>
+    <span class="read-badge" id="read-count">…</span>
   </div>
 
   <article class="chapter-text">
     <p class="placeholder-note">
-      Ragnarok School Fighter
+        Ragnarok School Fighter
     ตอนที่ 2 : ม.6/1
     </p>
     <p>
-เช้าวันต่อมา...
+    เช้าวันต่อมา...
 
 ห้อง ม.6/1 โรงเรียนชัยนาทพิทยาคมเต็มไปด้วยบรรยากาศวุ่นวาย
 
@@ -93,7 +94,7 @@
 ทำเอากายยิ่งสงสัยมากขึ้น
     </p>
     <p>
-ทันใดนั้น...
+    ทันใดนั้น...
 
 กริ๊งงงง!
 
@@ -150,7 +151,7 @@
 
 ---
     </p>
-    <p>
+        <p>
 สนามกีฬาหลังโรงเรียน
 
 นักเรียน ม.6/1 ยืนเรียงแถว
@@ -378,5 +379,12 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../js/counter.js"></script>
+<script>
+  siteCounter.hitOncePerBrowser("chapter-02").then(function (value) {
+    var el = document.getElementById("read-count");
+    if (el && value !== null) el.textContent = value.toLocaleString() + " อ่านแล้ว";
+  });
+</script>
 </body>
 </html>

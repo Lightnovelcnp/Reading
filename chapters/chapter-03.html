@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ตอนที่ 3: ม.6/1 — ผู้สืบทอดหมัดแห่งราชันย์</title>
+<title>ตอนที่ 3: xxxx — ผู้สืบทอดหมัดแห่งราชันย์</title>
 <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -28,12 +28,13 @@
   <div class="reader-head">
     <p class="eyebrow">ตอนที่ 03</p>
     <h1>ผู้สืบทอดหมัดแห่งราชันย์</h1>
+    <span class="read-badge" id="read-count">…</span>
   </div>
 
   <article class="chapter-text">
     <p class="placeholder-note">
         Ragnarok School Fighter
-    ตอนที่ 3 : ม.6/1
+    ตอนที่ 3 : xxxx
     </p>
     <p>
     x
@@ -58,5 +59,12 @@
 </footer>
 
 <script src="../js/main.js"></script>
+<script src="../js/counter.js"></script>
+<script>
+  siteCounter.hitOncePerBrowser("chapter-02").then(function (value) {
+    var el = document.getElementById("read-count");
+    if (el && value !== null) el.textContent = value.toLocaleString() + " อ่านแล้ว";
+  });
+</script>
 </body>
 </html>
