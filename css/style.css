@@ -38,10 +38,16 @@ body {
   color: var(--parchment);
   font-family: var(--font-body);
   line-height: 1.6;
+  overflow-x: hidden;
   background-image:
     radial-gradient(ellipse 900px 500px at 15% -10%, rgba(255, 90, 31, 0.12), transparent 60%),
     radial-gradient(ellipse 700px 500px at 100% 10%, rgba(255, 180, 0, 0.06), transparent 60%);
   background-attachment: fixed;
+}
+
+p, h1, h2, h3, .toc-title, .brand, .tagline, .synopsis {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -445,16 +451,53 @@ footer.site-footer p {
 
 .chapter-text p:first-of-type::first-letter {
   font-family: var(--font-display);
-  font-size: 3rem;
-  float: left;
-  line-height: 0.5;
-  padding: 8px 10px 0 0;
+  font-size: 1.7rem;   /* <-- change this number to make the letter bigger/smaller */
   color: var(--gold);
+  line-height: 1;
+}
+
+/* =========================================================
+   VISIT / READ COUNTERS
+========================================================= */
+
+.site-stats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  color: var(--parchment-dim);
+  margin-bottom: 26px;
+}
+
+.site-stats .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--blood-bright);
+  box-shadow: 0 0 8px 1px rgba(255, 90, 31, 0.7);
+}
+
+.site-stats strong {
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.read-badge {
+  font-family: var(--font-ui);
+  font-size: 0.7rem;
+  color: var(--parchment-dim);
+  letter-spacing: 0.02em;
+}
+
+.reader-head .read-badge {
+  display: inline-block;
+  margin-top: 10px;
 }
 
 .chapter-text .placeholder-note {
   font-family: var(--font-ui);
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--parchment-dim);
   border-left: 2px solid var(--blood);
   padding: 10px 18px;
