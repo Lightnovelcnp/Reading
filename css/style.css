@@ -451,7 +451,7 @@ footer.site-footer p {
 
 .chapter-text p:first-of-type::first-letter {
   font-family: var(--font-display);
-  font-size: 1.7rem;   /* <-- change this number to make the letter bigger/smaller */
+  font-size: 2.2rem;   /* <-- change this number to make the letter bigger/smaller */
   color: var(--gold);
   line-height: 1;
 }
