@@ -451,9 +451,42 @@ footer.site-footer p {
 
 .chapter-text p:first-of-type::first-letter {
   font-family: var(--font-display);
-  font-size: 2.2rem;   /* <-- change this number to make the letter bigger/smallr */
+  font-size: 2.2rem;   /* <-- change this number to make the letter bigger/smaller */
   color: var(--gold);
   line-height: 1;
+}
+
+/* =========================================================
+   CHAPTER IMAGES  (cover banner + inline images)
+========================================================= */
+
+.chapter-cover {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0 0 34px;
+  border: 1px solid rgba(255, 180, 0, 0.18);
+  box-shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+}
+
+.chapter-image {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  margin: 2em 0;
+  border: 1px solid rgba(255, 180, 0, 0.15);
+  box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.55);
+}
+
+.chapter-image-caption {
+  display: block;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  color: var(--parchment-dim);
+  margin-top: -1.6em;
+  margin-bottom: 2em;
 }
 
 /* =========================================================
