@@ -118,7 +118,8 @@
       <a class="toc-item" href="chapters/chapter-07.html">
         <span class="toc-seal">07</span>
         <span class="toc-body">
-          <p class="toc-title">xxxx</p>
+          <p class="toc-title">การคัดเลือกของผู้แข็งแกร่ง</p>
+          <span class="tag-new">ใหม่</span>
           <span class="toc-meta">
             <span class="read-badge" id="reads-07">…</span>
           </span>
@@ -220,7 +221,7 @@
 
   // Show how many times each chapter has been opened (without adding to the count —
   // the count only goes up when someone actually opens that chapter's page).
-  ['01', '02', '03', '04', '05'].forEach(function (num) {
+  ['01', '02', '03', '04', '05', '06', '07'].forEach(function (num) {
     siteCounter.get('chapter-' + num).then(function (value) {
       var el = document.getElementById('reads-' + num);
       if (el) el.textContent = (value || 0).toLocaleString() + ' อ่านแล้ว';
